@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_mathes"
+        android:icon="@drawable/icons8_calendar_24"
+        android:title="@string/matches"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/navigation_tams"
+        android:icon="@drawable/icons8_soccer_ball_24"
+        android:title="@string/teams"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/favorites"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+</menu>
