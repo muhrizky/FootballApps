@@ -5,34 +5,38 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.AppCompatSpinner
+
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowId
+import android.view.*
 import android.widget.*
 import com.google.gson.Gson
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.color.colorAccent
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Event
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.MatchesListPresenter
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.detail.MatchDetailActivity
+
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView {
+class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView{
     private val events: MutableList<Event> = mutableListOf()
-    private val league: MutableList<League> = mutableListOf()
+    private val leagues: MutableList<League> = mutableListOf()
     private lateinit var presenter: MatchesListPresenter
-    private lateinit var matchesList: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
+    private lateinit var matchesList: RecyclerView
     private lateinit var adapter: MatchesListAdapter
     private lateinit var spinner: Spinner
     private var fixture = 1
-    private var leagueId= "4328"
+    private var leagueId = "4328"   //EPL
+
 
     companion object {
         fun newFragment(fixture: Int, leagueId: String): MatchesListFragment{
@@ -53,7 +57,7 @@ class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView {
         presenter.getLeague()
 
         adapter = MatchesListAdapter(events){
-            Toast.makeText(context, "Oke Bro!", Toast.LENGTH_SHORT).show()
+            startActivity<MatchDetailActivity>("EVENT" to it)
         }
 
         matchesList.adapter = adapter
@@ -62,7 +66,7 @@ class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView {
             presenter.getList(leagueId)
         }
 
-        presenter.getList(leagueId)
+//        presenter.getList(leagueId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -97,10 +101,10 @@ class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView {
             }.lparams(width = matchParent, height = wrapContent)
 
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(R.color.colorAccent,
-                        android.R.color.holo_green_light,
-                        android.R.color.holo_orange_light,
-                        android.R.color.holo_red_light
+                setColorSchemeResources(colorAccent,
+                        R.color.holo_green_light,
+                        R.color.holo_orange_light,
+                        R.color.holo_red_light
                 )
 
                 matchesList = recyclerView {
@@ -125,8 +129,10 @@ class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView {
         leagues.clear()
         leagues.addAll(data)
 
-        val spinnerAdapter = ArrayAdapter(context, R.layout.simple_spinner_dropdown_item, leagues)
+        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, leagues)
         spinner.adapter = spinnerAdapter
+
+        spinner.setSelection(spinnerAdapter.getPosition(League("4328", "English Premier League")))
     }
 
     override fun showList(data: List<Event>) {

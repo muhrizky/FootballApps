@@ -1,4 +1,8 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.search
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Event
 
-class MatchesListSearchView {
+interface MatchesListSearchView{
+    fun showLoading()
+    fun hideLoading()
+    fun showList(data: List<Event>)
 }

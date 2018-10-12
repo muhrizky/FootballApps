@@ -1,4 +1,4 @@
-package id.ac.undip.ce.student.muhammadrizqi.footballapps.matches
+package id.ac.undip.ce.student.muhammadrizqi.footballapps.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

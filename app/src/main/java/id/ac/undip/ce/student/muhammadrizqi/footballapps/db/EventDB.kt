@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Match(
+data class EventDB(
         val id: Long?,
         var eventId: String?,
         var eventName: String?,

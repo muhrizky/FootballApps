@@ -6,6 +6,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Event(
+        @SerializedName("strSport")
+        var sportName: String? = null,
+
         @SerializedName("idEvent")
         var eventId: String? = null,
 
@@ -14,6 +17,9 @@ data class Event(
 
         @SerializedName("dateEvent")
         var eventDate: String? = null,
+
+        @SerializedName("strTime")
+        var eventTime: String? = null,
 
         @SerializedName("idHomeTeam")
         var homeTeamId: String? = null,
