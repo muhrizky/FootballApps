@@ -17,10 +17,6 @@ import id.ac.undip.ce.student.muhammadrizqi.footballapps.util.toGMTFormat
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.EventUI
 
 
-
-
-
-
 class MatchesListSearchAdapter(private val events: List<Event>, private val listener: (Event) -> Unit): RecyclerView.Adapter<MatchesListSearchAdapter.EventViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = EventViewHolder(EventUI().createView(AnkoContext.create(parent.context, parent)))
 

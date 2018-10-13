@@ -35,11 +35,18 @@ class MyDatabaseOpenHelper(ctx: Context): ManagedSQLiteOpenHelper(ctx, "Favorite
                 Team.TEAM_ID to TEXT + UNIQUE,
                 Team.TEAM_NAME to TEXT,
                 Team.TEAM_BADGE to TEXT)
+
+        db?.createTable(Favorite.TABLE_FAVORITE, true,
+                Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                Favorite.TEAM_ID to  TEXT + UNIQUE,
+                Favorite.TEAM_NAME to TEXT,
+                Favorite.TEAM_BADGE to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.dropTable(EventDB.TABLE_MATCH, true)
         db?.dropTable(Team.TABLE_TEAM, true)
+        db?.dropTable(Favorite.TABLE_FAVORITE, true)
     }
 
 }

@@ -1,5 +1,6 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.teams
 
+
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -22,9 +23,9 @@ import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Team
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
-
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.teams.detail.TeamDetailActivity
 class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
     private var teams: MutableList<Team> = mutableListOf()
     private var leagues: MutableList<League> = mutableListOf()
@@ -44,8 +45,8 @@ class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
         presenter.getLeague()
 
         adapter = TeamsAdapter(teams){
-            //            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
-            alert("Oke", "Berhasil Bro!").show()
+                       ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
+//            alert("Oke", "Berhasil Bro!").show()
 
         }
         listTeam.adapter = adapter
@@ -65,9 +66,6 @@ class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
 
         val searchItem = menu?.findItem(R.id.action_search)
         val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-//        searchView.setIconifiedByDefault(false)
-//        searchView.isIconified = false
-//        searchView.requestFocusFromTouch()
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String?): Boolean {
