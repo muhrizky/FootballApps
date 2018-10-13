@@ -1,5 +1,14 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.teams
 
+import com.google.gson.Gson
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.coroutines.experimental.bg
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.util.CoroutineContextProvider
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.TheSportDBApi
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.LeagueResponse
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.TeamResponse
+
 class TeamsPresenter(private val view: TeamsView,
                      private val apiRepository: ApiRepository,
                      private val gson: Gson,

@@ -20,7 +20,7 @@ import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.color.colorAccent
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.Team
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.database
 
-class FavoriteTeamsFragment: Fragment(), AnkoComponent<Context> {
+class FavoriteTeamsFragment: Fragment(), AnkoComponent<Context>{
     private var teams: MutableList<Team> = mutableListOf()
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var listTeams: RecyclerView

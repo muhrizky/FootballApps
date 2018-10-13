@@ -2,6 +2,7 @@ package id.ac.undip.ce.student.muhammadrizqi.footballapps.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.id.*
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.teams.TeamsFragment
@@ -41,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         nav_button.selectedItemId = navigation_mathes
     }
 
-    private fun openFragment(fragment: FavoritesFragment){
+
+    private fun openFragment(fragment: Fragment){
         if(savedInstanceState == null){
             supportFragmentManager
                     .beginTransaction()

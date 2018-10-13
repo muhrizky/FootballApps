@@ -1,6 +1,6 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.matches
 
-import android.R
+
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,7 +14,7 @@ import android.view.ViewGroup
 import android.view.*
 import android.widget.*
 import com.google.gson.Gson
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.color.colorAccent
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Event
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
@@ -101,10 +101,10 @@ class MatchesListFragment: Fragment(), AnkoComponent<Context>, MatchesListView{
             }.lparams(width = matchParent, height = wrapContent)
 
             swipeRefresh = swipeRefreshLayout {
-                setColorSchemeResources(colorAccent,
-                        R.color.holo_green_light,
-                        R.color.holo_orange_light,
-                        R.color.holo_red_light
+                setColorSchemeResources(R.color.colorAccent,
+                        android.R.color.holo_green_light,
+                        android.R.color.holo_orange_light,
+                        android.R.color.holo_red_light
                 )
 
                 matchesList = recyclerView {

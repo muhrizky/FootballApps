@@ -17,6 +17,7 @@ import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Event
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.EventDB
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.database
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.detail.MatchDetailActivity
 
@@ -82,8 +83,8 @@ class FavoriteMatchesFragment: Fragment(), AnkoComponent<Context> {
     private fun showFavorite(){
         requireContext().database.use {
             swipeRefresh.isRefreshing = true
-            val result = select(id.ac.undip.ce.student.muhammadrizqi.footballapps.db.Event.TABLE_MATCH)
-            val match = result.parseList(classParser<id.ac.undip.ce.student.muhammadrizqi.footballapps.db.EventDB>())
+            val result = select(EventDB.TABLE_MATCH)
+            val match = result.parseList(classParser<EventDB>())
             matches.clear()
             matches.addAll(match)
             adapter.notifyDataSetChanged()
