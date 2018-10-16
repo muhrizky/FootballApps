@@ -1,5 +1,19 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.teams
 
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.squareup.picasso.Picasso
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.id.team_badge
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.id.team_name
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Team
+import org.jetbrains.anko.*
+
 class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -> Unit): RecyclerView.Adapter<TeamsAdapter.TeamViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TeamViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
 

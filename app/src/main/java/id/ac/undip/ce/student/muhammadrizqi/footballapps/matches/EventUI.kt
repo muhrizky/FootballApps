@@ -2,13 +2,14 @@ package id.ac.undip.ce.student.muhammadrizqi.footballapps.matches
 
 import android.graphics.Color
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import org.jetbrains.anko.*
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
 import org.jetbrains.anko.cardview.v7.cardView
 
-class EventUI: AnkoComponent<ViewGroup> {
+class EventUI : AnkoComponent<ViewGroup> {
     override fun createView(ui: AnkoContext<ViewGroup>) = with(ui){
         cardView {
             lparams(width = matchParent, height = wrapContent){
@@ -20,15 +21,28 @@ class EventUI: AnkoComponent<ViewGroup> {
             linearLayout {
                 orientation = LinearLayout.VERTICAL
 
-                textView("Minggu, 04 Maret 2018"){
-                    id = R.id.date
-                    textColorResource = R.color.colorPrimary
-                    topPadding = dip(8)
-                    bottomPadding = dip(4)
+                relativeLayout {
+                    textView("Minggu, 04 Maret 2018"){
+                        id = R.id.date
+                        textColorResource = R.color.colorPrimary
+                        topPadding = dip(8)
+                        bottomPadding = dip(4)
 
-                }.lparams(width = wrapContent, height = wrapContent){
-                    gravity = Gravity.CENTER
-                }
+                    }.lparams(width = wrapContent, height = wrapContent){
+                        centerInParent()
+                    }
+
+                    imageButton(R.drawable.icons8_alarm_24){
+                        id = R.id.btn_notify
+                        backgroundColor = Color.WHITE
+                        topPadding = dip(8)
+                        rightPadding = dip(8)
+                        visibility = View.INVISIBLE
+                    }.lparams(width = wrapContent, height = wrapContent){
+                        alignParentRight()
+                    }
+
+                }.lparams(width = matchParent, height = wrapContent)
 
                 textView("21:00"){
                     id = R.id.time

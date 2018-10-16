@@ -9,8 +9,6 @@ import id.ac.undip.ce.student.muhammadrizqi.footballapps.util.CoroutineContextPr
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.LeagueResponse
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.EventResponse
 
-
-
 class MatchesListPresenter(private val view: MatchesListView,
                            private val apiRepository: ApiRepository,
                            private val gson: Gson,

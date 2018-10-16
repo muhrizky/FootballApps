@@ -1,5 +1,29 @@
 package id.ac.undip.ce.student.muhammadrizqi.footballapps.teams
 
+
+import android.content.Context
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.view.MenuItemCompat
+import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
+import android.view.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import android.widget.Spinner
+import com.google.gson.Gson
+import org.jetbrains.anko.*
+import org.jetbrains.anko.recyclerview.v7.recyclerView
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Team
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.teamsdetail.TeamDetailActivity
+import org.jetbrains.anko.support.v4.*
+
 class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
     private var teams: MutableList<Team> = mutableListOf()
     private var leagues: MutableList<League> = mutableListOf()
@@ -19,9 +43,9 @@ class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
         presenter.getLeague()
 
         adapter = TeamsAdapter(teams){
-            //            ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
-            alert("Oke", "Berhasil Bro!").show()
-
+            startActivity<TeamDetailActivity>(
+                    "teamObject" to it
+            )
         }
         listTeam.adapter = adapter
 
@@ -40,9 +64,6 @@ class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
 
         val searchItem = menu?.findItem(R.id.action_search)
         val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-//        searchView.setIconifiedByDefault(false)
-//        searchView.isIconified = false
-//        searchView.requestFocusFromTouch()
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String?): Boolean {
