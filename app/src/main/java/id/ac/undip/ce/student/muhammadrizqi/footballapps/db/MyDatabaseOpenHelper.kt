@@ -13,6 +13,7 @@ class MyDatabaseOpenHelper(ctx: Context): ManagedSQLiteOpenHelper(ctx, "Favorite
             if(instance == null){
                 instance = MyDatabaseOpenHelper(ctx.applicationContext)
             }
+
             return instance as MyDatabaseOpenHelper
         }
     }
@@ -30,23 +31,19 @@ class MyDatabaseOpenHelper(ctx: Context): ManagedSQLiteOpenHelper(ctx, "Favorite
                 EventDB.AWAY_TEAM_NAME to TEXT,
                 EventDB.AWAY_TEAM_SCORE to TEXT)
 
-        db?.createTable(Team.TABLE_TEAM, true,
-                Team.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-                Team.TEAM_ID to TEXT + UNIQUE,
-                Team.TEAM_NAME to TEXT,
-                Team.TEAM_BADGE to TEXT)
-
-        db?.createTable(Favorite.TABLE_FAVORITE, true,
-                Favorite.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
-                Favorite.TEAM_ID to  TEXT + UNIQUE,
-                Favorite.TEAM_NAME to TEXT,
-                Favorite.TEAM_BADGE to TEXT)
+        db?.createTable(TeamDB.TABLE_TEAM, true,
+                TeamDB.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                TeamDB.TEAM_ID to TEXT + UNIQUE,
+                TeamDB.TEAM_NAME to TEXT,
+                TeamDB.TEAM_BADGE to TEXT,
+                TeamDB.TEAM_STADIUM to TEXT,
+                TeamDB.TEAM_YEAR to TEXT,
+                TeamDB.TEAM_DESC to TEXT)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.dropTable(EventDB.TABLE_MATCH, true)
-        db?.dropTable(Team.TABLE_TEAM, true)
-        db?.dropTable(Favorite.TABLE_FAVORITE, true)
+        db?.dropTable(TeamDB.TABLE_TEAM, true)
     }
 
 }

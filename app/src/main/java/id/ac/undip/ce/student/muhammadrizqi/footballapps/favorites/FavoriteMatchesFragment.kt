@@ -21,7 +21,6 @@ import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.EventDB
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.database
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.matches.detail.MatchDetailActivity
 
-
 class FavoriteMatchesFragment: Fragment(), AnkoComponent<Context> {
     private var matches: MutableList<id.ac.undip.ce.student.muhammadrizqi.footballapps.db.EventDB> = mutableListOf()
     private lateinit var swipeRefresh: SwipeRefreshLayout

@@ -41,6 +41,11 @@
     <string name="spanish_la_liga">Spanish La Liga</string>
     <string name="next">NEXT</string>
     <string name="last">LAST</string>
+    <string name="overview">Overview</string>
+    <string name="player">Player</string>
+    <string name="weight_text">Weight (Kg)</string>
+    <string name="height_text">Height (M)</string>
+    <string name="position_text">Play Position</string>
 
     <array name="league">
         <item>English Premier League</item>

@@ -17,15 +17,13 @@ import android.widget.Spinner
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.alert
-import org.jetbrains.anko.support.v4.ctx
-import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.support.v4.swipeRefreshLayout
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.api.ApiRepository
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Team
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.League
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.teams.detail.TeamDetailActivity
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.teamsdetail.TeamDetailActivity
+import org.jetbrains.anko.support.v4.*
+
 class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
     private var teams: MutableList<Team> = mutableListOf()
     private var leagues: MutableList<League> = mutableListOf()
@@ -45,9 +43,9 @@ class TeamsFragment: Fragment(), AnkoComponent<Context>, TeamsView{
         presenter.getLeague()
 
         adapter = TeamsAdapter(teams){
-                       ctx.startActivity<TeamDetailActivity>("id" to "${it.teamId}")
-//            alert("Oke", "Berhasil Bro!").show()
-
+            startActivity<TeamDetailActivity>(
+                    "teamObject" to it
+            )
         }
         listTeam.adapter = adapter
 

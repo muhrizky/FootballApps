@@ -9,11 +9,11 @@ import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.Team
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.TeamDB
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.teams.TeamUI
 
-class FavoriteTeamsAdapter(private val teams: List<Team>, private val listener: (Team) -> Unit): RecyclerView.Adapter<FavoriteTeamsAdapter.ViewHolder>(){
+class FavoriteTeamsAdapter(private val teams: List<TeamDB>, private val listener: (TeamDB) -> Unit): RecyclerView.Adapter<FavoriteTeamsAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(TeamUI().createView(AnkoContext.create(parent.context, parent)))
     }
@@ -28,7 +28,7 @@ class FavoriteTeamsAdapter(private val teams: List<Team>, private val listener: 
         private val teamBadge: ImageView = view.find(R.id.team_badge)
         private val teamName: TextView = view.find(R.id.team_name)
 
-        fun bindItem(team: Team, listener: (Team) -> Unit){
+        fun bindItem(team: TeamDB, listener: (TeamDB) -> Unit){
             Picasso.get().load(team.teamBadge).into(teamBadge)
             teamName.text = team.teamName
 

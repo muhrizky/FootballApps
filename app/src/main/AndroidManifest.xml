@@ -20,7 +20,9 @@
         <activity android:name=".matches.search.MatchesListSearchActivity"
             android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".matches.detail.MatchDetailActivity"/>
-        <activity android:name=".teams.detail.TeamDetailActivity"/>
+        <activity android:name=".teamsdetail.TeamDetailActivity"/>
+        <activity android:name=".players.PlayerDetailActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

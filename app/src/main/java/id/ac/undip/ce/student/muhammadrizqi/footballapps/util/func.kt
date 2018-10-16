@@ -15,8 +15,8 @@ fun  strTodate(strDate: String?, pattern: String= "yyyy-MM-dd"): Date{
 }
 
 @SuppressLint("SimpleDateFormat")
-fun  changeFormatDate(date: Date?): String? = with(date ?: Date()){
-    SimpleDateFormat("EEE, dd MM yyy").format(this)
+fun changeFormatDate(date: Date?): String? = with(date ?: Date()){
+    SimpleDateFormat("EEE, dd MMM yyy", Locale.ENGLISH).format(this)
 }
 
 @SuppressLint("SimpleDateForamt")
@@ -26,6 +26,15 @@ fun toGMTFormat(date: String?, time:String?): Date? {
     val dateTime = "$date $time"
     return formatter.parse(dateTime)
 }
+
+fun String.dateTimeToFormat(format: String = "yyyy-MM-dd HH:mm:ss"): Long {
+
+    val formatter = SimpleDateFormat(format, Locale.ENGLISH)
+    val date = formatter.parse(this)
+
+    return date.time
+}
+
 
 fun View.visible(){
     visibility = View.VISIBLE

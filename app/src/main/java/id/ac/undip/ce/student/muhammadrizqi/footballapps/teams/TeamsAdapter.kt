@@ -23,31 +23,6 @@ class TeamsAdapter(private val teams: List<Team>, private val listener: (Team) -
         holder.bindItem(teams[position], listener)
     }
 
-    class  TeamUI : AnkoComponent<ViewGroup> {
-        override fun createView(ui: AnkoContext<ViewGroup>): View {
-            return with(ui){
-                linearLayout {
-                    lparams(width= matchParent, height = wrapContent)
-                    padding = dip(16)
-                    orientation = LinearLayout.HORIZONTAL
-
-                    imageView {
-                        id = team_badge
-                    }.lparams {
-                        height = dip(50)
-                        width= dip(50)
-                    }
-                    textView {
-                        id = team_name
-                        textSize = 16f
-                    }.lparams {
-                        margin = dip(15)
-                    }
-                }
-            }
-        }
-    }
-
     class TeamViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val teamBadge: ImageView = view.find(R.id.team_badge)
         private val teamName: TextView = view.find(R.id.team_name)

@@ -13,15 +13,16 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.R.color.colorAccent
-import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.Team
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.TeamDB
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.model.Team
 import id.ac.undip.ce.student.muhammadrizqi.footballapps.db.database
+import id.ac.undip.ce.student.muhammadrizqi.footballapps.teamsdetail.TeamDetailActivity
 
 class FavoriteTeamsFragment: Fragment(), AnkoComponent<Context>{
-    private var teams: MutableList<Team> = mutableListOf()
+    private var teamDB: MutableList<TeamDB> = mutableListOf()
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var listTeams: RecyclerView
     private lateinit var adapter: FavoriteTeamsAdapter
@@ -29,8 +30,17 @@ class FavoriteTeamsFragment: Fragment(), AnkoComponent<Context>{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        adapter = FavoriteTeamsAdapter(teams){
-            alert("Oke Bro", "Info").show()
+        adapter = FavoriteTeamsAdapter(teamDB){
+            val team = Team(
+                    it.teamId,
+                    it.teamName,
+                    it.teamBadge,
+                    it.teamStadium,
+                    it.teamFormedYear,
+                    it.teamDescription
+            )
+
+            requireContext().startActivity<TeamDetailActivity>("teamObject" to team)
         }
 
         listTeams.adapter = adapter
@@ -68,10 +78,10 @@ class FavoriteTeamsFragment: Fragment(), AnkoComponent<Context>{
     private fun showFavorite(){
         requireContext().database.use {
             swipeRefresh.isRefreshing = true
-            val result = select(Team.TABLE_TEAM)
-            val team = result.parseList(classParser<Team>())
-            teams.clear()
-            teams.addAll(team)
+            val result = select(TeamDB.TABLE_TEAM)
+            val team = result.parseList(classParser<TeamDB>())
+            teamDB.clear()
+            teamDB.addAll(team)
             adapter.notifyDataSetChanged()
             swipeRefresh.isRefreshing = false
         }
