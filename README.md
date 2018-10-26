@@ -1,8 +1,6 @@
-# FootballApps
 # Tentang Aplikasi
 Aplikasi ini merupakan aplikasi hasil dari pemebelajaran di kotlin android developer expret dari Dicoding Academy.
 Aplikasi ini menampilkan 
-
 Jadwal pertandingan berdasarkan liga.
 * Daftar pertandingan yang akan datang.
 * Daftar pertandingan yang sudah selesai.
