@@ -20,3 +20,5 @@ Favorite.
 Testing
 * Menerapkan unit tests pada beberapa fungsi, misalnya fungsi untuk request data ke server.
 * Menerapkan instrumentation tests dengan skenario sesuai behaviour pada aplikasi.
+
+![alt text](https://raw.githubusercontent.com/muhrizky/FootballApps/master/sertif%20kade.png)
