@@ -16,3 +16,7 @@ Daftar tim berdasarkan liga.
 Favorite.
 * Daftar tim favorite.
 * Daftar pertandingan favorite.
+
+Testing
+* Menerapkan unit tests pada beberapa fungsi, misalnya fungsi untuk request data ke server.
+* Menerapkan instrumentation tests dengan skenario sesuai behaviour pada aplikasi.
